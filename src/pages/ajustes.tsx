@@ -1,8 +1,8 @@
 import Layout from '@/components/template/Layout'
 
-export default function Home() {
+export default function Ajustes() {
   return (
-    <Layout titulo='Página inicial' subtitulo='Em construção'>
+    <Layout titulo='Página de Ajustes' subtitulo='Em construção'>
       <h3>Conteudo!!!</h3>
     </Layout>
   )

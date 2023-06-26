@@ -1,11 +1,14 @@
-interface MenuLateralProps{
+import { IconConfigs, IconHome, IconNotifications } from "../icons"
+import MenuItem from "./MenuItem"
 
-}
-
-export default function MenuLateral(props:MenuLateralProps){
+export default function MenuLateral(){
     return (
-        <div>
-            <h1>Menu</h1>
-        </div>
+        <aside>
+            <ul>
+                <MenuItem url="/" texto="Home" icon={IconHome}/>
+                <MenuItem url="/ajustes" texto="Ajustes" icon={IconConfigs} />
+                <MenuItem url="/notificacoes" texto="Notificações" icon={IconNotifications} />
+            </ul>
+        </aside>
     )
 }
