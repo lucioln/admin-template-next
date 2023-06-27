@@ -15,6 +15,10 @@ export default function AuthInput(props:AuthInputProps){
                 value={props.valor}
                 onChange={e => props.valorMudou?.(e.target.value)}
                 required={props.obrigatorio}
+
+                className={
+                    `px-4 py-3 rounded-lg bg-indigo-100 w-full`
+                }
             />
         </div>
     )
