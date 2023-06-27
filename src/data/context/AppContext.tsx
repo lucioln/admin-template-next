@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 type Tema = 'dark'| ''
 
 interface AppContextProps {
-    tema?: Tema;
+    tema: Tema;
     alternarTema?: () => void
 }
 
