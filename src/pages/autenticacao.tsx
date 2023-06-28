@@ -4,20 +4,30 @@ import SpanError from "@/components/template/SpanError";
 import useAuth from "@/data/hooks/useAuth";
 
 export default function Autenticacao() {
-    const {usuario, loginGoogle} = useAuth()
+    const { loginGoogle, login, cadastrar} = useAuth()
 
     const [modo, setModo] = useState<'login' | 'cadastro'>('login')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [error, setError] = useState(null)
 
-    function submit() {
-        if (modo === 'login') {
-            exibirError('Ocorreu um erro no login')
-        } else {
-            console.log('cadastrar')
-            exibirError('Ocorreu um erro no cadastro')
+    const TeclouEnter = (event) => {
+        if(event.key === 'Enter'){
+            submit()
         }
+    }
+
+    async function submit() {
+        try{
+            if (modo === 'login') {
+                await login(email, senha)
+            } else {
+                await cadastrar(email, senha)
+            }
+        } catch(e){
+            exibirError(e.message)
+        }
+        
     }
 
     function exibirError(msg:string, tempoEmSegundos:number = 5){
@@ -26,7 +36,7 @@ export default function Autenticacao() {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen">
+        <div className="flex flex-col justify-center items-center h-screen" onKeyDown={TeclouEnter}>
             <div className="w-1/2 mlg:w-1/3">
                 <h1 className={`
                 text-xl md:text-3xl font-bold mb-5 text-center 

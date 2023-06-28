@@ -1,8 +1,10 @@
 import { IconConfigs, IconHome, IconLogout, IconNotifications } from "../icons"
 import MenuItem from "./MenuItem"
 import Logo from "./Logo"
+import useAuth from "@/data/hooks/useAuth"
 
 export default function MenuLateral() {
+    const {logout} = useAuth()
     return (
         <aside className={`flex flex-col bg-gray-200 text-gray-900
                 dark:bg-gray-900 dark:text-gray-200`}>
@@ -17,7 +19,7 @@ export default function MenuLateral() {
                 <MenuItem url="/notificacoes" texto="Notificações" icon={IconNotifications} />
             </ul>
             <ul>
-                <MenuItem texto="Sair" icon={IconLogout} onClick={()=>{alert('Saiu')}} 
+                <MenuItem texto="Sair" icon={IconLogout} onClick={logout} 
                 className={`hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-900
                             hover:text-white`}/>
             </ul>
